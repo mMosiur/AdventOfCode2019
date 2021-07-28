@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day04", "Day04 - Secure Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day05", "Day05 - Sunny with a Chance of Asteroids\Day05.csproj", "{C34F9637-00B9-4720-8117-BF896E548F7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day06", "Day06 - Universal Orbit Map\Day06.csproj", "{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{C34F9637-00B9-4720-8117-BF896E548F7B}.Release|x64.Build.0 = Release|Any CPU
 		{C34F9637-00B9-4720-8117-BF896E548F7B}.Release|x86.ActiveCfg = Release|Any CPU
 		{C34F9637-00B9-4720-8117-BF896E548F7B}.Release|x86.Build.0 = Release|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Debug|x64.Build.0 = Debug|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Debug|x86.Build.0 = Debug|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Release|x64.ActiveCfg = Release|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Release|x64.Build.0 = Release|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Release|x86.ActiveCfg = Release|Any CPU
+		{5BB4F969-2C0C-4B3C-B6BE-AD4EE88BDD84}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
