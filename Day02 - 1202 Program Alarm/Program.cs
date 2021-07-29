@@ -93,7 +93,7 @@ namespace Day02
 			throw new Exception();
 		}
 
-		static void Main(string[] args)
+		static void Main()
 		{
 			int[] input = File.ReadAllText(INPUT_FILEPATH).Split(',').Select(s => int.Parse(s)).ToArray();
 

@@ -4,9 +4,8 @@ namespace Day02
 	{
 		public class MultiplicationInstruction : Instruction
 		{
-			private int[] _memory;
-			private int _instructionPointer;
-			private int[] _parameters;
+			private readonly int[] _memory;
+			private readonly int[] _parameters;
 			public MultiplicationInstruction(int[] program, int instructionPointer)
 			{
 				if(program[instructionPointer] != (int)Opcode.Multiplication)
@@ -14,7 +13,6 @@ namespace Day02
 					throw new IntcodeMachineInvalidInstructionException();
 				}
 				_memory = program;
-				_instructionPointer = instructionPointer;
 				_parameters = new int[3];
 				for (int i = 0; i < 3; i++)
 				{
