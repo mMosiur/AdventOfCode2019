@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day06", "Day06 - Universal 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day07", "Day07 - Amplification Circuit\Day07.csproj", "{7D154B8F-DB67-4EE7-BE30-2AD3D6141DB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day08", "Day08 - Space Image Format\Day08.csproj", "{AB021617-2DA8-42C6-8A54-7D763271BB37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,5 +116,17 @@ Global
 		{7D154B8F-DB67-4EE7-BE30-2AD3D6141DB4}.Release|x64.Build.0 = Release|Any CPU
 		{7D154B8F-DB67-4EE7-BE30-2AD3D6141DB4}.Release|x86.ActiveCfg = Release|Any CPU
 		{7D154B8F-DB67-4EE7-BE30-2AD3D6141DB4}.Release|x86.Build.0 = Release|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Debug|x64.Build.0 = Debug|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Release|x64.ActiveCfg = Release|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Release|x64.Build.0 = Release|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB021617-2DA8-42C6-8A54-7D763271BB37}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
