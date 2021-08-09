@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day08", "Day08 - Space Imag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day09", "Day09 - Sensor Boost\Day09.csproj", "{E836F457-1F51-4013-815F-899782B98CE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day10", "Day10 - Monitoring Station\Day10.csproj", "{61574C7F-5309-4E6F-AC88-64C15B257C1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,5 +144,17 @@ Global
 		{E836F457-1F51-4013-815F-899782B98CE3}.Release|x64.Build.0 = Release|Any CPU
 		{E836F457-1F51-4013-815F-899782B98CE3}.Release|x86.ActiveCfg = Release|Any CPU
 		{E836F457-1F51-4013-815F-899782B98CE3}.Release|x86.Build.0 = Release|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Debug|x64.Build.0 = Debug|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Debug|x86.Build.0 = Debug|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Release|x64.ActiveCfg = Release|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Release|x64.Build.0 = Release|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Release|x86.ActiveCfg = Release|Any CPU
+		{61574C7F-5309-4E6F-AC88-64C15B257C1B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
