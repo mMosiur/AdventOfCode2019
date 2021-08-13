@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day10", "Day10 - Monitoring
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day11", "Day11 - Space Police\Day11.csproj", "{46BA843C-B80A-41AD-85AD-2BB5506B33A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day12", "Day12 - The N-Body Problem\Day12.csproj", "{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,5 +172,17 @@ Global
 		{46BA843C-B80A-41AD-85AD-2BB5506B33A2}.Release|x64.Build.0 = Release|Any CPU
 		{46BA843C-B80A-41AD-85AD-2BB5506B33A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{46BA843C-B80A-41AD-85AD-2BB5506B33A2}.Release|x86.Build.0 = Release|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Debug|x64.Build.0 = Debug|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Debug|x86.Build.0 = Debug|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Release|x64.ActiveCfg = Release|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Release|x64.Build.0 = Release|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Release|x86.ActiveCfg = Release|Any CPU
+		{7AD532D7-EB9E-4499-A0D2-9A8A12CAFBA9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
