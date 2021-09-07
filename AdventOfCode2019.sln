@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day12", "Day12 - The N-Body
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day13", "Day13 - Care Package\Day13.csproj", "{2B8F5C5B-36C2-4883-B178-42024E313742}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day14", "Day14 - Space Stoichiometry\Day14.csproj", "{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -198,5 +200,17 @@ Global
 		{2B8F5C5B-36C2-4883-B178-42024E313742}.Release|x64.Build.0 = Release|Any CPU
 		{2B8F5C5B-36C2-4883-B178-42024E313742}.Release|x86.ActiveCfg = Release|Any CPU
 		{2B8F5C5B-36C2-4883-B178-42024E313742}.Release|x86.Build.0 = Release|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Debug|x64.Build.0 = Debug|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Debug|x86.Build.0 = Debug|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Release|x64.ActiveCfg = Release|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Release|x64.Build.0 = Release|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Release|x86.ActiveCfg = Release|Any CPU
+		{D9F97AC1-BAA9-4642-9EA2-D316C5462ACF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
