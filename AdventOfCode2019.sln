@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day15", "Day15 - Oxygen Sys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day16", "Day16 - Flawed Frequency Transmission\Day16.csproj", "{67CF621F-07CE-41C0-98DC-B55510D38F65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day17", "Day17 - Set and Forget\Day17.csproj", "{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -240,5 +242,17 @@ Global
 		{67CF621F-07CE-41C0-98DC-B55510D38F65}.Release|x64.Build.0 = Release|Any CPU
 		{67CF621F-07CE-41C0-98DC-B55510D38F65}.Release|x86.ActiveCfg = Release|Any CPU
 		{67CF621F-07CE-41C0-98DC-B55510D38F65}.Release|x86.Build.0 = Release|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Debug|x64.Build.0 = Debug|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Debug|x86.Build.0 = Debug|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Release|x64.ActiveCfg = Release|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Release|x64.Build.0 = Release|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Release|x86.ActiveCfg = Release|Any CPU
+		{1EF7940E-B657-4F99-AE25-CCE6D7F45E21}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
