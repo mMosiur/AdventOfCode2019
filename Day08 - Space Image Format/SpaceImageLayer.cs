@@ -66,9 +66,9 @@ namespace Day08
 						_ => throw new InvalidOperationException(),
 					};
 				}
-				result = result[0..^1] + Environment.NewLine;
+				result = result[..^1] + Environment.NewLine;
 			}
-			return result.Substring(0, result.Length - Environment.NewLine.Length);
+			return result[..^Environment.NewLine.Length];
 		}
 	}
 }
