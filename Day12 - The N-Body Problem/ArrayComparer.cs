@@ -3,31 +3,23 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Day12
-{
-	public class ArrayComparer<T> : IEqualityComparer<T[]>
-	{
-		public bool Equals(T[]? x, T[]? y)
-		{
-			if (x is null)
-			{
-				throw new ArgumentNullException(nameof(x));
-			}
-			if (y is null)
-			{
-				throw new ArgumentNullException(nameof(y));
-			}
-			return Enumerable.SequenceEqual(x, y);
-		}
+namespace Day12;
 
-		public int GetHashCode([DisallowNull] T[] obj)
+public class ArrayComparer<T> : IEqualityComparer<T[]>
+{
+	public bool Equals(T[]? array1, T[]? array2)
+	{
+		if (array1 is null)
 		{
-			int hash = HashCode.Combine(typeof(T));
-			foreach (T el in obj)
-			{
-				hash = HashCode.Combine(hash, el);
-			}
-			return hash;
+			throw new ArgumentNullException(nameof(array1));
 		}
+		if (array2 is null)
+		{
+			throw new ArgumentNullException(nameof(array2));
+		}
+		return Enumerable.SequenceEqual(array1, array2);
 	}
+
+	public int GetHashCode([DisallowNull] T[] array)
+		=> array.Aggregate(HashCode.Combine(typeof(T)), HashCode.Combine);
 }
