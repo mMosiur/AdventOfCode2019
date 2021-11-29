@@ -1,27 +1,26 @@
 using System;
 
-namespace Day02
+namespace Day02;
+
+internal partial class IntcodeMachine
 {
-	partial class IntcodeMachine
+	internal class HaltInstruction : Instruction
 	{
-		public class HaltInstruction : Instruction
+		public HaltInstruction(int[] program, int instructionPointer)
 		{
-			public HaltInstruction(int[] program, int instructionPointer)
+			if (program[instructionPointer] != (int)Opcode.Halt)
 			{
-				if(program[instructionPointer] != (int)Opcode.Halt)
-				{
-					throw new IntcodeMachineInvalidInstructionException();
-				}
+				throw new IntcodeMachineInvalidInstructionException();
 			}
+		}
 
-			public override int[] Parameters => Array.Empty<int>();
+		public override int[] Parameters => Array.Empty<int>();
 
-			public override Opcode Opcode => Opcode.Halt;
+		public override Opcode Opcode => Opcode.Halt;
 
-			public override int Execute()
-			{
-				throw new IntcodeMachineHaltException();
-			}
+		public override int Execute()
+		{
+			throw new IntcodeMachineHaltException();
 		}
 	}
 }
