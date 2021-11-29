@@ -1,19 +1,18 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Day19
+namespace Day19;
+
+public partial class IntcodeMachine
 {
-	public partial class IntcodeMachine
+	[Serializable]
+	public class IntcodeMachineInvalidOperationModeException : Exception
 	{
-		[Serializable]
-		internal class IntcodeMachineInvalidOperationModeException : Exception
-		{
-			public IntcodeMachineInvalidOperationModeException() { }
-			public IntcodeMachineInvalidOperationModeException(string message) : base(message) { }
-			public IntcodeMachineInvalidOperationModeException(string message, Exception inner) : base(message, inner) { }
-			protected IntcodeMachineInvalidOperationModeException(
-				SerializationInfo info,
-				StreamingContext context) : base(info, context) { }
-		}
+		public IntcodeMachineInvalidOperationModeException() { }
+		public IntcodeMachineInvalidOperationModeException(string message) : base(message) { }
+		public IntcodeMachineInvalidOperationModeException(string message, Exception inner) : base(message, inner) { }
+		protected IntcodeMachineInvalidOperationModeException(
+			SerializationInfo info,
+			StreamingContext context) : base(info, context) { }
 	}
 }

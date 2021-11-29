@@ -2,175 +2,163 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Day19
+namespace Day19;
+
+public partial class IntcodeMachine : ICloneable
 {
-	public class OutputInstructionExecutedEventArgs : EventArgs
+	public long[] Program { get; }
+	private readonly IntcodeMachineMemory _memory;
+	private int _instructionPointer;
+	private int _relativeBase;
+
+	public event EventHandler<OutputInstructionExecutedEventArgs>? OutputInstructionExecuted;
+	private void OnOutputInstructionExecuted(OutputInstructionExecutedEventArgs e) => OutputInstructionExecuted?.Invoke(this, e);
+
+	public Queue<long> Input => _instructionFactory.Input;
+
+	public Stream OutputStream
 	{
-		public long OutputValue { get; }
-		public Stream OutputStream { get; }
-		public OutputInstructionExecutedEventArgs(long outputValue, Stream outputStream)
+		get => _instructionFactory.OutputStream;
+		set => _instructionFactory.OutputStream = value;
+	}
+
+	private readonly InstructionFactory _instructionFactory;
+
+	private IntcodeMachine(long[] program, IntcodeMachineMemory memory, int instructionPointer, InstructionFactory instructionFactory, int relativeBase)
+	{
+		Program = new long[program.Length];
+		program.CopyTo(Program, 0);
+		_memory = memory;
+		_instructionPointer = instructionPointer;
+		_instructionFactory = instructionFactory;
+		_relativeBase = relativeBase;
+	}
+
+	public IntcodeMachine(long[] program, IEnumerable<long>? inputValues = null, Stream? outputStream = null)
+	{
+		Program = new long[program.Length];
+		program.CopyTo(Program, 0);
+		_memory = new IntcodeMachineMemory(Program);
+		_instructionPointer = 0;
+		_instructionFactory = new InstructionFactory(inputValues, outputStream);
+		_relativeBase = 0;
+	}
+
+	public IntcodeMachine(long[] program, Func<long> getInput, Stream? outputStream = null)
+	{
+		Program = new long[program.Length];
+		program.CopyTo(Program, 0);
+		_memory = new IntcodeMachineMemory(Program);
+		_instructionPointer = 0;
+		_instructionFactory = new InstructionFactory(getInput, outputStream);
+		_relativeBase = 0;
+	}
+
+	public IntcodeMachine(long[] program, int noun, int verb) : this(program)
+	{
+		_memory[1] = noun;
+		_memory[2] = verb;
+	}
+
+	public void Reset()
+	{
+		_memory.ResetWith(Program);
+		_instructionPointer = 0;
+		_relativeBase = 0;
+		_instructionFactory.Input?.Clear();
+		using StreamReader reader = new(_instructionFactory.OutputStream);
+		_ = reader.ReadToEnd();
+	}
+
+	public void Reset(int noun, int verb)
+	{
+		Reset();
+		_memory[1] = noun;
+		_memory[2] = verb;
+	}
+
+	[System.Diagnostics.DebuggerHidden]
+	private long? Step()
+	{
+
+		IntcodeMachineInstruction instruction = _instructionFactory.GetInstruction(_memory, _instructionPointer);
+		long? output = null;
+		if (instruction is OutputInstruction outputInstruction)
 		{
-			OutputValue = outputValue;
-			OutputStream = outputStream;
+			output = outputInstruction.GetOutputValue(_relativeBase);
+			OnOutputInstructionExecuted(new OutputInstructionExecutedEventArgs(
+				outputInstruction.GetOutputValue(_relativeBase),
+				outputInstruction.OutputStream
+			));
+		}
+		int move = instruction.Execute(ref _relativeBase);
+		_instructionPointer += move;
+		return output;
+	}
+
+	private void RunIndefinitely()
+	{
+		while (true)
+		{
+			Step();
 		}
 	}
 
-	public partial class IntcodeMachine : ICloneable
+	public long RunToFirstOutput()
 	{
-		public long[] Program { get; }
-		private readonly IntcodeMachineMemory _memory;
-		private int _instructionPointer;
-		private int _relativeBase;
-
-		public event EventHandler<OutputInstructionExecutedEventArgs>? OutputInstructionExecuted;
-		private void OnOutputInstructionExecuted(OutputInstructionExecutedEventArgs e) => OutputInstructionExecuted?.Invoke(this, e);
-
-		public Queue<long> Input => _instructionFactory.Input;
-
-		public Stream OutputStream
+		long? output = Step();
+		while (output is null)
 		{
-			get => _instructionFactory.OutputStream;
-			set => _instructionFactory.OutputStream = value;
+			output = Step();
 		}
+		return (long)output;
+	}
 
-		private readonly InstructionFactory _instructionFactory;
-
-		private IntcodeMachine(long[] program, IntcodeMachineMemory memory, int instructionPointer, InstructionFactory instructionFactory, int relativeBase)
+	public IEnumerable<long> RunYieldingOutput()
+	{
+		bool finished = false;
+		while (!finished)
 		{
-			Program = new long[program.Length];
-			program.CopyTo(Program, 0);
-			_memory = memory;
-			_instructionPointer = instructionPointer;
-			_instructionFactory = instructionFactory;
-			_relativeBase = relativeBase;
-		}
-
-		public IntcodeMachine(long[] program, IEnumerable<long>? inputValues = null, Stream? outputStream = null)
-		{
-			Program = new long[program.Length];
-			program.CopyTo(Program, 0);
-			_memory = new IntcodeMachineMemory(Program);
-			_instructionPointer = 0;
-			_instructionFactory = new InstructionFactory(inputValues, outputStream);
-			_relativeBase = 0;
-		}
-
-		public IntcodeMachine(long[] program, Func<long> getInput, Stream? outputStream = null)
-		{
-			Program = new long[program.Length];
-			program.CopyTo(Program, 0);
-			_memory = new IntcodeMachineMemory(Program);
-			_instructionPointer = 0;
-			_instructionFactory = new InstructionFactory(getInput, outputStream);
-			_relativeBase = 0;
-		}
-
-		public IntcodeMachine(long[] program, int noun, int verb) : this(program)
-		{
-			_memory[1] = noun;
-			_memory[2] = verb;
-		}
-
-		public void Reset()
-		{
-			_memory.ResetWith(Program);
-			_instructionPointer = 0;
-			_relativeBase = 0;
-			_instructionFactory.Input?.Clear();
-			using StreamReader reader = new(_instructionFactory.OutputStream);
-			_ = reader.ReadToEnd();
-		}
-
-		public void Reset(int noun, int verb)
-		{
-			Reset();
-			_memory[1] = noun;
-			_memory[2] = verb;
-		}
-
-		[System.Diagnostics.DebuggerHidden]
-		private long? Step()
-		{
-
-			IntcodeMachineInstruction instruction = _instructionFactory.GetInstruction(_memory, _instructionPointer);
-			long? output = null;
-			if (instruction is OutputInstruction outputInstruction)
-			{
-				output = outputInstruction.GetOutputValue(_relativeBase);
-				OnOutputInstructionExecuted(new OutputInstructionExecutedEventArgs(
-					outputInstruction.GetOutputValue(_relativeBase),
-					outputInstruction.OutputStream
-				));
-			}
-			int move = instruction.Execute(ref _relativeBase);
-			_instructionPointer += move;
-			return output;
-		}
-
-		private void RunIndefinitely()
-		{
-			while (true)
-			{
-				Step();
-			}
-		}
-
-		public long RunToFirstOutput()
-		{
-			long? output = Step();
-			while (output is null)
-			{
-				output = Step();
-			}
-			return (long)output;
-		}
-
-		public IEnumerable<long> RunYieldingOutput()
-		{
-			bool finished = false;
-			while (!finished)
-			{
-				long output;
-				try
-				{
-					output = RunToFirstOutput();
-				}
-				catch (IntcodeMachineHaltException)
-				{
-					yield break;
-				}
-				yield return output;
-			}
-		}
-
-		public bool Run(bool breakOnOutputWritten = false)
-		{
+			long output;
 			try
 			{
-				if (breakOnOutputWritten)
-				{
-					RunToFirstOutput();
-				}
-				else
-				{
-					RunIndefinitely();
-				}
-				return false;
+				output = RunToFirstOutput();
 			}
 			catch (IntcodeMachineHaltException)
 			{
-				return true;
+				yield break;
 			}
+			yield return output;
 		}
-
-		object ICloneable.Clone() => Clone();
-
-		public IntcodeMachine Clone() => new(
-				(long[])Program.Clone(),
-				_memory.Clone(),
-				_instructionPointer,
-				_instructionFactory.Clone(),
-				_relativeBase
-			);
 	}
+
+	public bool Run(bool breakOnOutputWritten = false)
+	{
+		try
+		{
+			if (breakOnOutputWritten)
+			{
+				RunToFirstOutput();
+			}
+			else
+			{
+				RunIndefinitely();
+			}
+			return false;
+		}
+		catch (IntcodeMachineHaltException)
+		{
+			return true;
+		}
+	}
+
+	object ICloneable.Clone() => Clone();
+
+	public IntcodeMachine Clone() => new(
+			(long[])Program.Clone(),
+			_memory.Clone(),
+			_instructionPointer,
+			_instructionFactory.Clone(),
+			_relativeBase
+		);
 }
