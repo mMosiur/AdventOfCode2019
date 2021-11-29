@@ -1,19 +1,18 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Day11
+namespace Day11;
+
+public partial class IntcodeMachine
 {
-	public partial class IntcodeMachine
+	[Serializable]
+	internal class IntcodeMachineHaltException : Exception
 	{
-		[Serializable]
-		internal class IntcodeMachineHaltException : Exception
-		{
-			public IntcodeMachineHaltException() { }
-			public IntcodeMachineHaltException(string message) : base(message) { }
-			public IntcodeMachineHaltException(string message, Exception inner) : base(message, inner) { }
-			protected IntcodeMachineHaltException(
-				SerializationInfo info,
-				StreamingContext context) : base(info, context) { }
-		}
+		public IntcodeMachineHaltException() { }
+		public IntcodeMachineHaltException(string message) : base(message) { }
+		public IntcodeMachineHaltException(string message, Exception inner) : base(message, inner) { }
+		protected IntcodeMachineHaltException(
+			SerializationInfo info,
+			StreamingContext context) : base(info, context) { }
 	}
 }

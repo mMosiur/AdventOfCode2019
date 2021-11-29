@@ -1,42 +1,41 @@
 using Day11.Geometry;
 
-namespace Day11
+namespace Day11;
+
+public class HullPaintingRobot
 {
-	public class HullPaintingRobot
+	public Point Position { get; private set; }
+	public Vector Direction { get; private set; }
+
+	public IntcodeMachine Driver { get; }
+
+	public void RotateClockwise()
 	{
-		public Point Position { get; private set; }
-		public Vector Direction { get; private set; }
-
-		public IntcodeMachine Driver { get; }
-
-		public void RotateClockwise()
+		Direction = new Vector
 		{
-			Direction = new Vector
-			{
-				X = -Direction.Y,
-				Y = Direction.X
-			};
-		}
+			X = -Direction.Y,
+			Y = Direction.X
+		};
+	}
 
-		public void RotateCounterclockwise()
+	public void RotateCounterclockwise()
+	{
+		Direction = new Vector
 		{
-			Direction = new Vector
-			{
-				X = Direction.Y,
-				Y = -Direction.X
-			};
-		}
+			X = Direction.Y,
+			Y = -Direction.X
+		};
+	}
 
-		public void GoForward()
-		{
-			Position += Direction;
-		}
+	public void GoForward()
+	{
+		Position += Direction;
+	}
 
-		public HullPaintingRobot(IntcodeMachine driver)
-		{
-			Position = new Point(0, 0);
-			Direction = Vector.Up;
-			Driver = driver;
-		}
+	public HullPaintingRobot(IntcodeMachine driver)
+	{
+		Position = new Point(0, 0);
+		Direction = Vector.Up;
+		Driver = driver;
 	}
 }
