@@ -3,7 +3,7 @@ namespace Day11;
 public partial class IntcodeMachine
 {
 
-	internal abstract class IntcodeMachineInstruction
+	public abstract class IntcodeMachineInstruction
 	{
 		public abstract InstructionParameter[] Parameters { get; }
 		public int ParameterCount => Parameters?.Length ?? 0;

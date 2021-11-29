@@ -6,7 +6,7 @@ namespace Day11;
 public partial class IntcodeMachine
 {
 	[Serializable]
-	internal class IntcodeMachineInvalidOperationModeException : Exception
+	public class IntcodeMachineInvalidOperationModeException : Exception
 	{
 		public IntcodeMachineInvalidOperationModeException() { }
 		public IntcodeMachineInvalidOperationModeException(string message) : base(message) { }

@@ -6,7 +6,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class IntcodeMachineMemory : IList<long>
+	public class IntcodeMachineMemory : IList<long>
 	{
 		private long[] _memory;
 

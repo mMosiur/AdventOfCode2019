@@ -2,7 +2,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class LessThanInstruction : IntcodeMachineInstruction
+	public class LessThanInstruction : IntcodeMachineInstruction
 	{
 		private readonly IntcodeMachineMemory _memory;
 		private readonly InstructionParameter[] _parameters;

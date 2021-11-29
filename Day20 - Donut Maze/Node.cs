@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Day20;
 
-internal class Node
+public class Node
 {
 	public IDictionary<Node, LevelStep> Neighbors { get; }
 

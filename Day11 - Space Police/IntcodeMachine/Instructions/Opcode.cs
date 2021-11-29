@@ -2,7 +2,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal enum Opcode
+	public enum Opcode
 	{
 		Addition = 1,
 		Multiplication = 2,

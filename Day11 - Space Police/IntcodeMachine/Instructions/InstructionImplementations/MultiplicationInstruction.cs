@@ -2,7 +2,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class MultiplicationInstruction : IntcodeMachineInstruction
+	public class MultiplicationInstruction : IntcodeMachineInstruction
 	{
 		private readonly IntcodeMachineMemory _memory;
 		private readonly InstructionParameter[] _parameters;

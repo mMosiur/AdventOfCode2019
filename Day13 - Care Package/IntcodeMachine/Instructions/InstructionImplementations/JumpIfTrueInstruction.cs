@@ -2,7 +2,7 @@ namespace Day13;
 
 public partial class IntcodeMachine
 {
-	internal class JumpIfTrueInstruction : IntcodeMachineInstruction
+	public class JumpIfTrueInstruction : IntcodeMachineInstruction
 	{
 		private readonly IntcodeMachineMemory _memory;
 		private readonly int _instructionPointer;

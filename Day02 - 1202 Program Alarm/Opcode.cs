@@ -1,8 +1,8 @@
 namespace Day02;
 
-internal partial class IntcodeMachine
+public partial class IntcodeMachine
 {
-	internal enum Opcode
+	public enum Opcode
 	{
 		Addition = 1,
 		Multiplication = 2,

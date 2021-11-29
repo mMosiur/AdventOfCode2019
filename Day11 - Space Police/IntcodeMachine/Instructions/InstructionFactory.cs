@@ -5,7 +5,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class InstructionFactory
+	public class InstructionFactory
 	{
 		public Queue<long> Input { get; }
 		public Stream OutputStream { get; set; }

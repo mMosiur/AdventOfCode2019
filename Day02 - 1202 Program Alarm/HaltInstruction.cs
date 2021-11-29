@@ -2,9 +2,9 @@ using System;
 
 namespace Day02;
 
-internal partial class IntcodeMachine
+public partial class IntcodeMachine
 {
-	internal class HaltInstruction : Instruction
+	public class HaltInstruction : Instruction
 	{
 		public HaltInstruction(int[] program, int instructionPointer)
 		{

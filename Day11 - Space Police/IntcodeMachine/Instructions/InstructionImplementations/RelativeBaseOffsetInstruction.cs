@@ -2,7 +2,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class RelativeBaseOffsetInstruction : IntcodeMachineInstruction
+	public class RelativeBaseOffsetInstruction : IntcodeMachineInstruction
 	{
 		private readonly IntcodeMachineMemory _memory;
 		private readonly InstructionParameter[] _parameters;

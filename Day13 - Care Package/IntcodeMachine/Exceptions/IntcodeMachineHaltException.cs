@@ -6,7 +6,7 @@ namespace Day13;
 public partial class IntcodeMachine
 {
 	[Serializable]
-	internal class IntcodeMachineHaltException : Exception
+	public class IntcodeMachineHaltException : Exception
 	{
 		public IntcodeMachineHaltException() { }
 		public IntcodeMachineHaltException(string message) : base(message) { }

@@ -2,7 +2,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class InstructionParameter
+	public class InstructionParameter
 	{
 		public InstructionParameterMode Mode { get; }
 		public long RawValue { get; }

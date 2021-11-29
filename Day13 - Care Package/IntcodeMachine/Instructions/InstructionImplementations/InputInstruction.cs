@@ -4,7 +4,7 @@ namespace Day13;
 
 public partial class IntcodeMachine
 {
-	internal class InputInstruction : IntcodeMachineInstruction
+	public class InputInstruction : IntcodeMachineInstruction
 	{
 		private readonly InstructionParameter[] _parameters;
 		private readonly IntcodeMachineMemory _memory;

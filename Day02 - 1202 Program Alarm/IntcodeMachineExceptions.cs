@@ -3,10 +3,10 @@ using System.Runtime.Serialization;
 
 namespace Day02;
 
-internal partial class IntcodeMachine
+public partial class IntcodeMachine
 {
 	[Serializable]
-	internal class IntcodeMachineHaltException : Exception
+	public class IntcodeMachineHaltException : Exception
 	{
 		public IntcodeMachineHaltException() { }
 		public IntcodeMachineHaltException(string message) : base(message) { }
@@ -17,7 +17,7 @@ internal partial class IntcodeMachine
 	}
 
 	[Serializable]
-	internal class IntcodeMachineInvalidInstructionException : Exception
+	public class IntcodeMachineInvalidInstructionException : Exception
 	{
 		public IntcodeMachineInvalidInstructionException() { }
 		public IntcodeMachineInvalidInstructionException(string message) : base(message) { }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Day20;
 
-internal class PortalsBuilder
+public class PortalsBuilder
 {
 	private readonly Dictionary<string, List<(int X, int Y)>> _portalNodePositions = new();
 	private readonly string _startLabel;

@@ -1,6 +1,6 @@
 namespace Day02;
 
-internal partial class IntcodeMachine
+public partial class IntcodeMachine
 {
 
 	public int[] InitialMemory { get; }

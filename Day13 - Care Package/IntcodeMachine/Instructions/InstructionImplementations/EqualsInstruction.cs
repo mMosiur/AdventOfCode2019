@@ -2,7 +2,7 @@ namespace Day13;
 
 public partial class IntcodeMachine
 {
-	internal class EqualsInstruction : IntcodeMachineInstruction
+	public class EqualsInstruction : IntcodeMachineInstruction
 	{
 		private readonly IntcodeMachineMemory _memory;
 		private readonly InstructionParameter[] _parameters;

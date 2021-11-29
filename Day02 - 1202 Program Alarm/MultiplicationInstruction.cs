@@ -1,8 +1,8 @@
 namespace Day02;
 
-internal partial class IntcodeMachine
+public partial class IntcodeMachine
 {
-	internal class MultiplicationInstruction : Instruction
+	public class MultiplicationInstruction : Instruction
 	{
 		private readonly int[] _memory;
 		private readonly int[] _parameters;

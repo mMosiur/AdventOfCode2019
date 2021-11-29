@@ -1,8 +1,8 @@
 namespace Day02;
 
-internal partial class IntcodeMachine
+public partial class IntcodeMachine
 {
-	internal abstract class Instruction
+	public abstract class Instruction
 	{
 		public static Instruction GetInstructionAt(int[] program, int instructionPointer)
 		{

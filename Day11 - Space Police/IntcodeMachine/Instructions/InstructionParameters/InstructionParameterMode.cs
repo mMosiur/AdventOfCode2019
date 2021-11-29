@@ -2,7 +2,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal enum InstructionParameterMode
+	public enum InstructionParameterMode
 	{
 		PositionMode = 0,
 		ImmediateMode = 1,

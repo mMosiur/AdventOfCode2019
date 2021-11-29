@@ -4,7 +4,7 @@ namespace Day11;
 
 public partial class IntcodeMachine
 {
-	internal class HaltInstruction : IntcodeMachineInstruction
+	public class HaltInstruction : IntcodeMachineInstruction
 	{
 		public HaltInstruction(IntcodeMachineMemory memory, int instructionPointer)
 		{
