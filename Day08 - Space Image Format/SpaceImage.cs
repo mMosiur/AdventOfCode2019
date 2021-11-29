@@ -1,57 +1,45 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day08
+namespace Day08;
+
+public class SpaceImage
 {
-	public class SpaceImage : IEnumerable<IEnumerable<char>>
+	public IList<SpaceImageLayer> Layers { get; }
+
+	public int ImageWidth { get; }
+	public int ImageHeight { get; }
+
+	public SpaceImage(char[] rawData, int imageWidth, int imageHeight)
 	{
-		public IList<SpaceImageLayer> Layers { get; }
+		ImageWidth = imageWidth;
+		ImageHeight = imageHeight;
+		int layerSize = imageWidth * imageHeight;
+		int layerCount = rawData.Length / layerSize;
+		Layers = Enumerable.Range(0, layerCount)
+			.Select(l => l * layerSize)
+			.Select(l => new SpaceImageLayer(rawData.AsSpan(l, layerSize), imageWidth, imageHeight))
+			.ToList();
+	}
 
-		public int ImageWidth { get; }
-		public int ImageHeight { get; }
-
-		public SpaceImage(char[] rawData, int imageWidth, int imageHeight)
+	public SpaceImageLayer GetVisibleImage()
+	{
+		char[,] image = new char[ImageWidth, ImageHeight];
+		for (int r = 0; r < ImageHeight; r++)
 		{
-			ImageWidth = imageWidth;
-			ImageHeight = imageHeight;
-			int layerSize = imageWidth * imageHeight;
-			int layerCount = rawData.Length / layerSize;
-			Layers = Enumerable.Range(0, layerCount)
-				.Select(l => l * layerSize)
-				.Select(l => new SpaceImageLayer(rawData.AsSpan(l, layerSize), imageWidth, imageHeight))
-				.ToList();
-		}
-
-		public SpaceImageLayer GetVisibleImage()
-		{
-			char[,] image = new char[ImageWidth, ImageHeight];
-			for (int r = 0; r < ImageHeight; r++)
+			for (int c = 0; c < ImageWidth; c++)
 			{
-				for (int c = 0; c < ImageWidth; c++)
+				foreach (SpaceImageLayer layer in Layers)
 				{
-					foreach (SpaceImageLayer layer in Layers)
+					if (layer[c, r] != '2')
 					{
-						if (layer[c, r] != '2')
-						{
-							image[c, r] = layer[c, r];
-							break;
-						}
+						image[c, r] = layer[c, r];
+						break;
 					}
 				}
 			}
-			return new SpaceImageLayer(image);
 		}
-
-		public IEnumerator<IEnumerable<char>> GetEnumerator()
-		{
-			return Layers.GetEnumerator();
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
+		return new SpaceImageLayer(image);
 	}
 }

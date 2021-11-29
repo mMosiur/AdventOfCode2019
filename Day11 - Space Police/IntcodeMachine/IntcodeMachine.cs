@@ -1,105 +1,102 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
-namespace Day11
+namespace Day11;
+
+public partial class IntcodeMachine
 {
+	public long[] Program { get; }
+	private readonly IntcodeMachineMemory _memory;
+	private int _instructionPointer;
+	private int _relativeBase;
 
-	public partial class IntcodeMachine
+	public Queue<long> Input => _instructionFactory.Input;
+
+	public Stream OutputStream => _instructionFactory.OutputStream;
+
+	private readonly InstructionFactory _instructionFactory;
+
+	public IntcodeMachine(long[] program, IEnumerable<long>? inputValues = null, Stream? outputStream = null)
 	{
-		public long[] Program { get; }
-		private readonly IntcodeMachineMemory _memory;
-		private int _instructionPointer;
-		private int _relativeBase;
+		Program = new long[program.Length];
+		program.CopyTo(Program, 0);
+		_memory = new IntcodeMachineMemory(program);
+		_instructionPointer = 0;
+		_instructionFactory = new InstructionFactory(inputValues, outputStream);
+		_relativeBase = 0;
+	}
 
-		public Queue<long> Input => _instructionFactory.Input;
+	public IntcodeMachine(long[] program, int noun, int verb) : this(program)
+	{
+		_memory[1] = noun;
+		_memory[2] = verb;
+	}
 
-		public Stream OutputStream => _instructionFactory.OutputStream;
+	public void Reset()
+	{
+		_memory.ResetWith(Program);
+		_instructionPointer = 0;
+		_relativeBase = 0;
+		_instructionFactory.Input.Clear();
+		using StreamReader reader = new(_instructionFactory.OutputStream);
+		_ = reader.ReadToEnd();
+	}
 
-		private readonly InstructionFactory _instructionFactory;
+	public void Reset(int noun, int verb)
+	{
+		Reset();
+		_memory[1] = noun;
+		_memory[2] = verb;
+	}
 
-		public IntcodeMachine(long[] program, IEnumerable<long>? inputValues = null, Stream? outputStream = null)
+	private void Step()
+	{
+
+		IntcodeMachineInstruction instruction = _instructionFactory.GetInstruction(_memory, _instructionPointer);
+		int move = instruction.Execute(ref _relativeBase);
+		_instructionPointer += move;
+	}
+
+	private void RunIndefinitely()
+	{
+		while (true)
 		{
-			Program = new long[program.Length];
-			program.CopyTo(Program, 0);
-			_memory = new IntcodeMachineMemory(program);
-			_instructionPointer = 0;
-			_instructionFactory = new InstructionFactory(inputValues, outputStream);
-			_relativeBase = 0;
+			Step();
 		}
+	}
 
-		public IntcodeMachine(long[] program, int noun, int verb) : this(program)
+	private void RunToFirstOutput()
+	{
+		Stream? outputStream = _instructionFactory.OutputStream;
+		if (outputStream is null)
 		{
-			_memory[1] = noun;
-			_memory[2] = verb;
+			RunIndefinitely();
+			return;
 		}
-
-		public void Reset()
+		long startingPositionInOutputStream = outputStream.Position;
+		while (startingPositionInOutputStream == outputStream.Position)
 		{
-			_memory.ResetWith(Program);
-			_instructionPointer = 0;
-			_relativeBase = 0;
-			_instructionFactory.Input.Clear();
-			using StreamReader reader = new(_instructionFactory.OutputStream);
-			_ = reader.ReadToEnd();
+			Step();
 		}
+	}
 
-		public void Reset(int noun, int verb)
+	public bool Run(bool breakOnOutputWritten = false)
+	{
+		try
 		{
-			Reset();
-			_memory[1] = noun;
-			_memory[2] = verb;
-		}
-
-		private void Step()
-		{
-
-			IntcodeMachineInstruction instruction = _instructionFactory.GetInstruction(_memory, _instructionPointer);
-			int move = instruction.Execute(ref _relativeBase);
-			_instructionPointer += move;
-		}
-
-		private void RunIndefinitely()
-		{
-			while (true)
+			if (breakOnOutputWritten)
 			{
-				Step();
+				RunToFirstOutput();
 			}
-		}
-
-		private void RunToFirstOutput()
-		{
-			Stream? outputStream = _instructionFactory.OutputStream;
-			if (outputStream is null)
+			else
 			{
 				RunIndefinitely();
-				return;
 			}
-			long startingPositionInOutputStream = outputStream.Position;
-			while (startingPositionInOutputStream == outputStream.Position)
-			{
-				Step();
-			}
+			return false;
 		}
-
-		public bool Run(bool breakOnOutputWritten = false)
+		catch (IntcodeMachineHaltException)
 		{
-			try
-			{
-				if (breakOnOutputWritten)
-				{
-					RunToFirstOutput();
-				}
-				else
-				{
-					RunIndefinitely();
-				}
-				return false;
-			}
-			catch (IntcodeMachineHaltException)
-			{
-				return true;
-			}
+			return true;
 		}
 	}
 }

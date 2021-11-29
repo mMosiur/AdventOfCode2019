@@ -1,34 +1,34 @@
-namespace Day02
+namespace Day02;
+
+public partial class IntcodeMachine
 {
-	partial class IntcodeMachine
+	public class MultiplicationInstruction : Instruction
 	{
-		public class MultiplicationInstruction : Instruction
+		private readonly int[] _memory;
+		private readonly int[] _parameters;
+
+		public MultiplicationInstruction(int[] program, int instructionPointer)
 		{
-			private readonly int[] _memory;
-			private readonly int[] _parameters;
-			public MultiplicationInstruction(int[] program, int instructionPointer)
+			if (program[instructionPointer] != (int)Opcode.Multiplication)
 			{
-				if(program[instructionPointer] != (int)Opcode.Multiplication)
-				{
-					throw new IntcodeMachineInvalidInstructionException();
-				}
-				_memory = program;
-				_parameters = new int[3];
-				for (int i = 0; i < 3; i++)
-				{
-					_parameters[i] = program[instructionPointer + i + 1];
-				}
+				throw new IntcodeMachineInvalidInstructionException();
 			}
-
-			public override int[] Parameters => _parameters;
-
-			public override Opcode Opcode => Opcode.Multiplication;
-
-			public override int Execute()
+			_memory = program;
+			_parameters = new int[3];
+			for (int i = 0; i < 3; i++)
 			{
-				_memory[Parameters[2]] = _memory[Parameters[0]] * _memory[Parameters[1]];
-				return ParameterCount + 1;
+				_parameters[i] = program[instructionPointer + i + 1];
 			}
+		}
+
+		public override int[] Parameters => _parameters;
+
+		public override Opcode Opcode => Opcode.Multiplication;
+
+		public override int Execute()
+		{
+			_memory[Parameters[2]] = _memory[Parameters[0]] * _memory[Parameters[1]];
+			return ParameterCount + 1;
 		}
 	}
 }

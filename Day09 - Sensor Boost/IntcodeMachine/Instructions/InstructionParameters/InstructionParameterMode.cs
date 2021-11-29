@@ -1,12 +1,11 @@
-namespace Day09
+namespace Day09;
+
+public partial class IntcodeMachine
 {
-	public partial class IntcodeMachine
+	public enum InstructionParameterMode
 	{
-		public enum InstructionParameterMode
-		{
-			PositionMode = 0,
-			ImmediateMode = 1,
-			RelativeMode = 2
-		}
+		PositionMode = 0,
+		ImmediateMode = 1,
+		RelativeMode = 2
 	}
 }

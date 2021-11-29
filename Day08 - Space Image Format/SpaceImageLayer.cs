@@ -1,74 +1,65 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Day08
+namespace Day08;
+
+public class SpaceImageLayer : IEnumerable<char>
 {
-	public class SpaceImageLayer : IEnumerable<char>
+	private readonly char[,] _image;
+
+	public char this[int rowIndex, int colIndex]
 	{
-		private readonly char[,] _image;
+		get => _image[rowIndex, colIndex];
+		set => _image[rowIndex, colIndex] = value;
+	}
 
-		public char this[int rowIndex, int colIndex]
+	public SpaceImageLayer(Span<char> rawData, int imageWidth, int imageHeight)
+	{
+		if (rawData.Length != imageWidth * imageHeight)
 		{
-			get => _image[rowIndex, colIndex];
-			set => _image[rowIndex, colIndex] = value;
+			throw new ArgumentException("Dimensions do not match provided data length");
 		}
-
-		public SpaceImageLayer(Span<char> rawData, int imageWidth, int imageHeight)
+		_image = new char[imageWidth, imageHeight];
+		for (int r = 0; r < imageHeight; r++)
 		{
-			if (rawData.Length != imageWidth * imageHeight)
+			for (int c = 0; c < imageWidth; c++)
 			{
-				throw new ArgumentException("Dimensions do not match provided data length");
+				int index = r * imageWidth + c;
+				_image[c, r] = rawData[index];
 			}
-			_image = new char[imageWidth, imageHeight];
-			for (int r = 0; r < imageHeight; r++)
+		}
+	}
+
+	public SpaceImageLayer(char[,] image)
+	{
+		_image = image;
+	}
+
+	public IEnumerator<char> GetEnumerator() => _image.Cast<char>().GetEnumerator();
+
+	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+	public string GetImage()
+	{
+		string result = "";
+		int imageWidth = _image.GetLength(0);
+		int imageHeight = _image.GetLength(1);
+		for (int r = 0; r < imageHeight; r++)
+		{
+			for (int c = 0; c < imageWidth; c++)
 			{
-				for (int c = 0; c < imageWidth; c++)
+				result += _image[c, r] switch
 				{
-					int index = r * imageWidth + c;
-					_image[c, r] = rawData[index];
-				}
+					'0' => '░',
+					'1' => '█',
+					'2' => ' ',
+					_ => throw new InvalidOperationException(),
+				};
 			}
+			result = result[..^1] + Environment.NewLine;
 		}
-
-		public SpaceImageLayer(char[,] image)
-		{
-			_image = image;
-		}
-
-		public IEnumerator<char> GetEnumerator()
-		{
-			foreach (char c in _image)
-			{
-				yield return c;
-			}
-		}
-
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return GetEnumerator();
-		}
-
-		public string GetImage()
-		{
-			string result = "";
-			int imageWidth = _image.GetLength(0);
-			int imageHeight = _image.GetLength(1);
-			for (int r = 0; r < imageHeight; r++)
-			{
-				for (int c = 0; c < imageWidth; c++)
-				{
-					result += _image[c, r] switch
-					{
-						'0' => '░',
-						'1' => '█',
-						'2' => ' ',
-						_ => throw new InvalidOperationException(),
-					};
-				}
-				result = result[..^1] + Environment.NewLine;
-			}
-			return result[..^Environment.NewLine.Length];
-		}
+		return result[..^Environment.NewLine.Length];
 	}
 }

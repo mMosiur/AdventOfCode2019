@@ -1,6 +1,6 @@
 namespace Day20;
 
-internal static class ArrayExtensions
+public static class ArrayExtensions
 {
 	public static T GetOrDefault<T>(this T[,] array, int index1, int index2) where T : struct
 	{

@@ -1,15 +1,14 @@
-namespace Day13
+namespace Day13;
+
+public static class TileExtensions
 {
-	public static class TileExtensions
+	public static char ToChar(this Tile tile) => tile switch
 	{
-		public static char ToChar(this Tile tile) => tile switch
-		{
-			Tile.Empty => ' ',
-			Tile.Wall => '█',
-			Tile.Block => '■',
-			Tile.HorizontalPaddle => '―',
-			Tile.Ball => '○',
-			_ => '�'
-		};
-	}
+		Tile.Empty => ' ',
+		Tile.Wall => '█',
+		Tile.Block => '■',
+		Tile.HorizontalPaddle => '―',
+		Tile.Ball => '○',
+		_ => '�'
+	};
 }

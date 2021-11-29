@@ -1,8 +1,7 @@
-namespace Day10
+namespace Day10;
+
+public enum MapSpotType
 {
-	public enum MapSpotType
-	{
-		Empty = '.',
-		Asteroid = '#'
-	}
+	Empty = '.',
+	Asteroid = '#'
 }

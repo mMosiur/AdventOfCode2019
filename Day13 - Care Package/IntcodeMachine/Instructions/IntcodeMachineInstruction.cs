@@ -1,14 +1,13 @@
-namespace Day13
-{
-	public partial class IntcodeMachine
-	{
+namespace Day13;
 
-		internal abstract class IntcodeMachineInstruction
-		{
-			public abstract InstructionParameter[] Parameters { get; }
-			public int ParameterCount => Parameters?.Length ?? 0;
-			public abstract Opcode Opcode { get; }
-			public abstract int Execute(ref int relativeBase);
-		}
+public partial class IntcodeMachine
+{
+
+	public abstract class IntcodeMachineInstruction
+	{
+		public abstract InstructionParameter[] Parameters { get; }
+		public int ParameterCount => Parameters?.Length ?? 0;
+		public abstract Opcode Opcode { get; }
+		public abstract int Execute(ref int relativeBase);
 	}
 }

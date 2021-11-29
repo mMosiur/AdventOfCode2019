@@ -1,8 +1,7 @@
-namespace Day11
+namespace Day11;
+
+public enum Color
 {
-	public enum Color
-	{
-		Black = 0,
-		White = 1
-	}
+	Black = 0,
+	White = 1
 }

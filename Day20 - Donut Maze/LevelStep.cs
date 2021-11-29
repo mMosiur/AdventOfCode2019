@@ -1,6 +1,6 @@
 namespace Day20;
 
-internal enum LevelStep
+public enum LevelStep
 {
 	ToOuter = -1,
 	Same = 0,

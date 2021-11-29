@@ -1,29 +1,28 @@
 using System;
 using System.Linq;
 
-namespace Day12
+namespace Day12;
+
+public static class CelestialSystemExtensions
 {
-	public static class CelestialSystemExtensions
+	public static int[] GetXAxisState(this CelestialSystem system)
 	{
-		public static int[] GetXAxisState(this CelestialSystem system)
-		{
-			return system.Moons
-				.Select(m => HashCode.Combine(m.Position.X, m.Velocity.X))
-				.ToArray();
-		}
+		return system.Moons
+			.Select(m => HashCode.Combine(m.Position.X, m.Velocity.X))
+			.ToArray();
+	}
 
-		public static int[] GetYAxisState(this CelestialSystem system)
-		{
-			return system.Moons
-				.Select(m => HashCode.Combine(m.Position.Y, m.Velocity.Y))
-				.ToArray();
-		}
+	public static int[] GetYAxisState(this CelestialSystem system)
+	{
+		return system.Moons
+			.Select(m => HashCode.Combine(m.Position.Y, m.Velocity.Y))
+			.ToArray();
+	}
 
-		public static int[] GetZAxisState(this CelestialSystem system)
-		{
-			return system.Moons
-				.Select(m => HashCode.Combine(m.Position.Z, m.Velocity.Z))
-				.ToArray();
-		}
+	public static int[] GetZAxisState(this CelestialSystem system)
+	{
+		return system.Moons
+			.Select(m => HashCode.Combine(m.Position.Z, m.Velocity.Z))
+			.ToArray();
 	}
 }

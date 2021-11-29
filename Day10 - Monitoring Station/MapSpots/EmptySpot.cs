@@ -1,7 +1,6 @@
-namespace Day10
+namespace Day10;
+
+public class EmptySpot : MapSpot
 {
-	public class EmptySpot : MapSpot
-	{
-		public override MapSpotType Type => MapSpotType.Empty;
-	}
+	public override MapSpotType Type => MapSpotType.Empty;
 }

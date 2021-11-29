@@ -1,28 +1,26 @@
 using System;
 using System.Collections.Generic;
 
-namespace Day18
+namespace Day18;
+
+public class KeyNode : INode
 {
+	public IDictionary<INode, int> Neighbors { get; }
 
-	public class KeyNode : INode
+	public char Letter { get; }
+
+	public Point Point { get; }
+
+	public KeyNode(Point point, char letter)
 	{
-		public IDictionary<INode, int> Neighbors { get; }
-
-		public char Letter { get; }
-
-		public Point Point { get; }
-
-		public KeyNode(Point point, char letter)
+		Point = point;
+		if (!char.IsLower(letter))
 		{
-			Point = point;
-			if (!char.IsLower(letter))
-			{
-				throw new ArgumentException("Key letter should be a lowercase letter.", nameof(letter));
-			}
-			Neighbors = new Dictionary<INode, int>();
-			Letter = letter;
+			throw new ArgumentException("Key letter should be a lowercase letter.", nameof(letter));
 		}
-
-		public override string ToString() => $"Key '{Letter}' at {Point}";
+		Neighbors = new Dictionary<INode, int>();
+		Letter = letter;
 	}
+
+	public override string ToString() => $"Key '{Letter}' at {Point}";
 }

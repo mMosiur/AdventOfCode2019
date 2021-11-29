@@ -2,29 +2,23 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Day09
-{
-	class Program
-	{
-		const string INPUT_FILEPATH = "input.txt";
+using Day09;
 
-		static void Main()
-		{
-			long[] program = File.ReadAllText(INPUT_FILEPATH).Split(',').Select(long.Parse).ToArray();
-			IntcodeMachine machine = new(program);
-			machine.OutputStream = Console.OpenStandardOutput();
+const string DEFAULT_INPUT_FILEPATH = "input.txt";
 
-			// Part 1
-			Console.Write("Part 1: ");
-			machine.InputValues = new long[] { 1 };
-			machine.Run();
+string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILEPATH;
+long[] program = File.ReadAllText(filepath).Split(',').Select(long.Parse).ToArray();
+IntcodeMachine machine = new(program);
+machine.OutputStream = Console.OpenStandardOutput();
 
-			machine.ResetMachine();
+// Part 1
+Console.Write("Part 1: ");
+machine.InputValues = new long[] { 1 };
+machine.Run();
 
-			// Part 2
-			Console.Write("Part 2: ");
-			machine.InputValues = new long[] { 2 };
-			machine.Run();
-		}
-	}
-}
+machine.ResetMachine();
+
+// Part 2
+Console.Write("Part 2: ");
+machine.InputValues = new long[] { 2 };
+machine.Run();

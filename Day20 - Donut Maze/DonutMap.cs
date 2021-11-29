@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Day20;
 
-internal class DonutMap
+public class DonutMap
 {
 	private const int DistanceBetweenNodes = 1;
 

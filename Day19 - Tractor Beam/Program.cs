@@ -2,27 +2,23 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace Day19
-{
-	class Program
-	{
-		const string INPUT_FILEPATH = "input.txt";
+using Day19;
 
-		static void Main()
-		{
-			long[] program = File.ReadAllText(INPUT_FILEPATH).Split(',').Select(long.Parse).ToArray();
-			DroneDispatcher dispatcher = new(program);
+const string DEFAULT_INPUT_FILEPATH = "input.txt";
+const int AREA_WIDTH = 50;
+const int AREA_HEIGHT = 50;
+const int SHIP_WIDTH = 100;
+const int SHIP_HEIGHT = 100;
 
-			const int AREA_WIDTH = 50;
-			const int AREA_HEIGHT = 50;
-			int part1 = dispatcher.CalculateTractorBeamArea(AREA_WIDTH, AREA_HEIGHT);
-			Console.WriteLine($"Part 1: {part1}");
+string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILEPATH;
+long[] program = File.ReadAllText(filepath).Split(',').Select(long.Parse).ToArray();
+DroneDispatcher dispatcher = new(program);
 
-			const int SHIP_WIDTH = 100;
-			const int SHIP_HEIGHT = 100;
-			Point p = dispatcher.FindPointWhereShipFits(SHIP_WIDTH, SHIP_HEIGHT);
-			int part2 = p.X * 10_000 + p.Y;
-			Console.WriteLine($"Part 2: {part2}");
-		}
-	}
-}
+Console.Write("Part 1: ");
+int part1 = dispatcher.CalculateTractorBeamArea(AREA_WIDTH, AREA_HEIGHT);
+Console.WriteLine(part1);
+
+Console.Write("Part 2: ");
+Point p = dispatcher.FindPointWhereShipFits(SHIP_WIDTH, SHIP_HEIGHT);
+int part2 = p.X * 10_000 + p.Y;
+Console.WriteLine(part2);
