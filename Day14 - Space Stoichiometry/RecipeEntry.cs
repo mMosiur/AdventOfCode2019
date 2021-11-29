@@ -1,8 +1,3 @@
-namespace Day14
-{
-	public struct RecipeEntry
-	{
-		public Chemical Chemical { get; set; }
-		public int Quantity { get; set; }
-	}
-}
+namespace Day14;
+
+public record struct RecipeEntry(Chemical Chemical, int Quantity);

@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Day14
-{
-	class Program
-	{
-		const string INPUT_FILEPATH = "test3.txt";
+using Day14;
 
-		static void Main()
-		{
-			IList<Recipe> recipes = File.ReadAllLines(INPUT_FILEPATH).Select(Recipe.Parse).ToList();
-			FuelCalculator calculator = new(recipes, "FUEL", "ORE");
-			long part1 = calculator.GetRequiredOreForFuel(1);
-			Console.WriteLine($"Part 1: {part1}");
-			long part2 = calculator.GetMaxFuelForGivenOre(1000000000000);
-			Console.WriteLine($"Part 2: {part2}");
-		}
-	}
-}
+const string DEFAULT_INPUT_FILEPATH = "input.txt";
+
+string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILEPATH;
+IList<Recipe> recipes = File.ReadAllLines(filepath).Select(Recipe.Parse).ToList();
+FuelCalculator calculator = new(recipes, "FUEL", "ORE");
+Console.Write("Part 1: ");
+long part1 = calculator.GetRequiredOreForFuel(1);
+Console.WriteLine(part1);
+Console.Write("Part 2: ");
+long part2 = calculator.GetMaxFuelForGivenOre(1_000_000_000_000);
+Console.WriteLine(part2);
