@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 
-namespace Day18
+namespace Day18;
+
+public interface INode
 {
-	public interface INode
-	{
-		public IDictionary<INode, int> Neighbors { get; }
-		public Point Point { get; }
-	}
+	public IDictionary<INode, int> Neighbors { get; }
+	public Point Point { get; }
 }
