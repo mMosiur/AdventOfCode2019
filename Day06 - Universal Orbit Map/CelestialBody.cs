@@ -1,33 +1,25 @@
-namespace Day06
+namespace Day06;
+
+public class CelestialBody
 {
-	public class CelestialBody
+	public string Name { get; set; }
+	public CelestialBody? OrbitedBody { get; set; }
+	private int _distanceToCenter;
+	public int DistanceToCenter
 	{
-		public string Name { get; set; }
-		public CelestialBody OrbitedBody { get; set; }
-		private int _distanceToCenter;
-		public int DistanceToCenter
+		get
 		{
-			get
+			if (_distanceToCenter < 0)
 			{
-				if(_distanceToCenter < 0)
-				{
-					if(OrbitedBody is null)
-					{
-						_distanceToCenter = 0;
-					}
-					else
-					{
-						_distanceToCenter = OrbitedBody.DistanceToCenter + 1;
-					}
-				}
-				return _distanceToCenter;
+				_distanceToCenter = OrbitedBody is null ? 0 : OrbitedBody.DistanceToCenter + 1;
 			}
+			return _distanceToCenter;
 		}
-		public CelestialBody(string name)
-		{
-			Name = name;
-			OrbitedBody = null;
-			_distanceToCenter = -1;
-		}
+	}
+	public CelestialBody(string name)
+	{
+		Name = name;
+		OrbitedBody = null;
+		_distanceToCenter = -1;
 	}
 }
