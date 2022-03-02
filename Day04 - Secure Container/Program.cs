@@ -1,20 +1,16 @@
 using System;
-using System.IO;
-using System.Linq;
 
-using Day04;
+using AdventOfCode.Year2019.Day04;
 
-const string DEFAULT_INPUT_FILEPATH = "input.txt";
+const string DEFAULT_INPUT_FILE = "input.txt";
 
-string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILEPATH;
-(int start, int end) = File.ReadAllText(filepath)
-	.Split('-').Select(s => int.Parse(s)).SplitIntoTwo();
-PasswordChecker passwordChecker = new(start, end);
+string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILE;
+var solver = new Day04Solver(filepath);
 
 Console.Write("Part 1: ");
-int part1 = passwordChecker.AllMatchingPassword(false).Count();
+string part1 = solver.SolvePart1();
 Console.WriteLine(part1);
 
 Console.Write("Part 2: ");
-int part2 = passwordChecker.AllMatchingPassword(true).Count();
+string part2 = solver.SolvePart2();
 Console.WriteLine(part2);
