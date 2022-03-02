@@ -1,24 +1,16 @@
 using System;
-using System.IO;
-using System.Linq;
 
-using Day09;
+using AdventOfCode.Year2019.Day09;
 
-const string DEFAULT_INPUT_FILEPATH = "input.txt";
+const string DEFAULT_INPUT_FILE = "input.txt";
 
-string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILEPATH;
-long[] program = File.ReadAllText(filepath).Split(',').Select(long.Parse).ToArray();
-IntcodeMachine machine = new(program);
-machine.OutputStream = Console.OpenStandardOutput();
+string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILE;
+var solver = new Day09Solver(filepath);
 
-// Part 1
 Console.Write("Part 1: ");
-machine.InputValues = new long[] { 1 };
-machine.Run();
+string part1 = solver.SolvePart1();
+Console.WriteLine(part1);
 
-machine.ResetMachine();
-
-// Part 2
 Console.Write("Part 2: ");
-machine.InputValues = new long[] { 2 };
-machine.Run();
+string part2 = solver.SolvePart2();
+Console.WriteLine(part2);
