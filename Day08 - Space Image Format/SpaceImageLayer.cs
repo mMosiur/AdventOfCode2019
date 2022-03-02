@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day08;
+namespace AdventOfCode.Year2019.Day08;
 
 public class SpaceImageLayer : IEnumerable<char>
 {
