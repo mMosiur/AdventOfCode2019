@@ -1,6 +1,6 @@
 using System;
 
-namespace Day12;
+namespace AdventOfCode.Year2019.Day12;
 
 public static class Numerical
 {
@@ -20,8 +20,14 @@ public static class Numerical
 		return a | b;
 	}
 
+	/// <summary>
+	/// Least Common Multiple for two values
+	/// </summary>
 	public static ulong LCM(ulong a, ulong b) => a / GCD(a, b) * b;
 
+	/// <summary>
+	/// Least Common Multiple for many values
+	/// </summary>
 	public static ulong LCM(ulong val1, ulong val2, params ulong[] values)
 	{
 		if (val1 == 0 || val2 == 0)

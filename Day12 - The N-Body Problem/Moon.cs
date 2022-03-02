@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Day12;
+namespace AdventOfCode.Year2019.Day12;
 
 public class Moon
 {

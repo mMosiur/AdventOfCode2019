@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Day12;
+namespace AdventOfCode.Year2019.Day12;
 
 public class ArrayComparer<T> : IEqualityComparer<T[]>
 {
