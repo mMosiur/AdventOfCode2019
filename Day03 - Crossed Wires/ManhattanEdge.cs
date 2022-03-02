@@ -1,6 +1,6 @@
 using System;
 
-namespace Day03;
+namespace AdventOfCode.Year2019.Day03;
 
 public struct ManhattanEdge
 {
