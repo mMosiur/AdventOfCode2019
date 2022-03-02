@@ -1,4 +1,4 @@
-namespace Day02;
+namespace AdventOfCode.Year2019.Day02;
 
 public partial class IntcodeMachine
 {
