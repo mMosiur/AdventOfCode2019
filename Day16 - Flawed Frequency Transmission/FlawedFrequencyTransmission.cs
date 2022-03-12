@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day16;
+namespace AdventOfCode.Year2019.Day16;
 
 public static class FlawedFrequencyTransmission
 {

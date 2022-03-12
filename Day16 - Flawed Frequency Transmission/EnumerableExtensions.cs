@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Day16;
+namespace AdventOfCode.Year2019.Day16;
 
 public static class EnumerableExtensions
 {
