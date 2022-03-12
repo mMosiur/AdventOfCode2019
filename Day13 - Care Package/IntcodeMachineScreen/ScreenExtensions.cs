@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Day13;
+namespace AdventOfCode.Year2019.Day13;
 
 public static class ScreenExtensions
 {
