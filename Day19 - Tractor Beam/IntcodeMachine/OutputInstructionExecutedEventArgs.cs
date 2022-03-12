@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Day19;
+namespace AdventOfCode.Year2019.Day19;
 
 public class OutputInstructionExecutedEventArgs : EventArgs
 {

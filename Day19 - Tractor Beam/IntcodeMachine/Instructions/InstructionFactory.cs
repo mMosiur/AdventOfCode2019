@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Day19;
+namespace AdventOfCode.Year2019.Day19;
 
 public partial class IntcodeMachine
 {
