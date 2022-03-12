@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Day18;
+namespace AdventOfCode.Year2019.Day18;
 
 public class VaultNode : INode
 {

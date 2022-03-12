@@ -1,7 +1,7 @@
 using System.IO;
 using System.Text;
 
-namespace Day05;
+namespace AdventOfCode.Year2019.Day05;
 
 public class StringStream : Stream
 {

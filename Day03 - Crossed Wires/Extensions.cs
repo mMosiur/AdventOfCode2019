@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Day03;
+namespace AdventOfCode.Year2019.Day03;
 
 public static class Extensions
 {

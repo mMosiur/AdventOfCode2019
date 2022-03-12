@@ -1,6 +1,6 @@
 using System;
 
-namespace Day16;
+namespace AdventOfCode.Year2019.Day16;
 
 public static class Numerical
 {

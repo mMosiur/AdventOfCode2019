@@ -1,6 +1,6 @@
 using System;
 
-namespace Day12;
+namespace AdventOfCode.Year2019.Day12;
 
 public record struct Vector3D(int X, int Y, int Z)
 {

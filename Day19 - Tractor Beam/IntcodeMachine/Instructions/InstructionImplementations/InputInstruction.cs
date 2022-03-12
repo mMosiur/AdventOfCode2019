@@ -1,6 +1,6 @@
 using System;
 
-namespace Day19;
+namespace AdventOfCode.Year2019.Day19;
 
 public partial class IntcodeMachine
 {

@@ -1,35 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
-using Day13;
+using AdventOfCode.Year2019.Day13;
 
-const string DEFAULT_INPUT_FILEPATH = "input.txt";
+const string DEFAULT_INPUT_FILE = "input.txt";
 
-string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILEPATH;
-long[] program = File.ReadAllText(filepath).Split(',').Select(long.Parse).ToArray();
-Console.OutputEncoding = System.Text.Encoding.UTF8;
-IntcodeMachineScreen screen = new();
+string filepath = args.Length > 0 ? args[0] : DEFAULT_INPUT_FILE;
+var solver = new Day13Solver(filepath);
 
 Console.Write("Part 1: ");
-IntcodeMachine machine = new(program);
-screen.ConnectTo(machine);
-machine.Run();
-int count = screen.Enumerate().Select(kp => kp.Value).Count(c => c == Tile.Block.ToChar());
-Console.WriteLine(count);
-
-screen.Disconnect();
+string part1 = solver.SolvePart1();
+Console.WriteLine(part1);
 
 Console.Write("Part 2: ");
-program[0] = 2;
-long getInput()
-{
-	int ballX = screen.Enumerate().SingleOrDefault(kp => kp.Value == Tile.Ball.ToChar()).Key.X;
-	int paddleX = screen.Enumerate().SingleOrDefault(kp => kp.Value == Tile.HorizontalPaddle.ToChar()).Key.X;
-	return Comparer<int>.Default.Compare(ballX, paddleX);
-}
-machine = new IntcodeMachine(program, getInput);
-screen.ConnectTo(machine);
-machine.Run();
-Console.WriteLine(screen.Score);
+string part2 = solver.SolvePart2();
+Console.WriteLine(part2);

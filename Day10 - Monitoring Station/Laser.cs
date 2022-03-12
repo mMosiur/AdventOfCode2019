@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day10;
+namespace AdventOfCode.Year2019.Day10;
 
 public class Laser
 {

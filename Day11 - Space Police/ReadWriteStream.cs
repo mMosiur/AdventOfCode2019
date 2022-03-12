@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Day11;
+namespace AdventOfCode.Year2019.Day11;
 
 public class ReadWriteStream : Stream
 {

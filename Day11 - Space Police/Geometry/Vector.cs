@@ -1,4 +1,4 @@
-namespace Day11.Geometry;
+namespace AdventOfCode.Year2019.Day11.Geometry;
 
 public record struct Vector(int X, int Y)
 {

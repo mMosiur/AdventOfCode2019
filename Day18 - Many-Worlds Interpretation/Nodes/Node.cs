@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Day18;
+namespace AdventOfCode.Year2019.Day18;
 
 public static class Node
 {

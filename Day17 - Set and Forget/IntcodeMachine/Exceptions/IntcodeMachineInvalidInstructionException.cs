@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Day17;
+namespace AdventOfCode.Year2019.Day17;
 
 public partial class IntcodeMachine
 {

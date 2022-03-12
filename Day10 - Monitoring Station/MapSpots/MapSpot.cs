@@ -1,6 +1,6 @@
 using System;
 
-namespace Day10;
+namespace AdventOfCode.Year2019.Day10;
 
 public abstract class MapSpot
 {

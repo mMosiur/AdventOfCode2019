@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Day17;
+namespace AdventOfCode.Year2019.Day17;
 
 public partial class IntcodeMachine : ICloneable
 {

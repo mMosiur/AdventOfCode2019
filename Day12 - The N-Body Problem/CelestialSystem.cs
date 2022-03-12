@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day12;
+namespace AdventOfCode.Year2019.Day12;
 
 public class CelestialSystem
 {
