@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day14;
+namespace AdventOfCode.Year2019.Day14;
 
 public class Recipe
 {
