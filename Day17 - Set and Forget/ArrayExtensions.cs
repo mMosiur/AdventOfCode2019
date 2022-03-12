@@ -1,6 +1,6 @@
 using System;
 
-namespace Day17;
+namespace AdventOfCode.Year2019.Day17;
 
 public static class ArrayExtensions
 {

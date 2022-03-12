@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day17;
+namespace AdventOfCode.Year2019.Day17;
 
 public class AftScaffoldingControlAndInformationInterface
 {
