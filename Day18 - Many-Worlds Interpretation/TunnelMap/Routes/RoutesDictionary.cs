@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Day18;
+namespace AdventOfCode.Year2019.Day18;
 
 public class RoutesDictionary : Dictionary<INode, IDictionary<INode, RouteDetails>>
 {

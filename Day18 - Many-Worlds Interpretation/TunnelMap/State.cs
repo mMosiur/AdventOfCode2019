@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Day18;
+namespace AdventOfCode.Year2019.Day18;
 
 public struct State : IEquatable<State>
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Day18;
+namespace AdventOfCode.Year2019.Day18;
 
 public class PriorityQueue<TElement, TPriority> where TPriority : notnull, IComparable<TPriority>
 {
