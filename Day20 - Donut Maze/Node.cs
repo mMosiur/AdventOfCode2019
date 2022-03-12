@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Day20;
+namespace AdventOfCode.Year2019.Day20;
 
 public class Node
 {
