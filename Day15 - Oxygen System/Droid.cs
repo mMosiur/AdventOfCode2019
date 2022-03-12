@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Day15;
+namespace AdventOfCode.Year2019.Day15;
 
 public class Droid : ICloneable
 {
