@@ -1,0 +1,21 @@
+# In the beginning J is 0 and T is 0
+# If J is true at the end of the script, the droid will jump
+
+# Next instructions set J to ~(B&C) or ~B|~C
+# so J register will have information whether B or C is a hole
+OR B J
+AND C J
+NOT J J
+
+# Make J false if D (the landing spot if droid jumps now) is false (hole)
+AND D J
+
+# Set T to ~A (true if A is a hole)
+NOT A T
+
+# So if T is true (A is a hole) override calculations
+# and make droid jump (next step would make him fall regardless)
+OR T J
+
+# Execute script
+WALK
