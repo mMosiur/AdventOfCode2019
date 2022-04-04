@@ -1,0 +1,59 @@
+# Go to Hallway and take mouse
+north
+take mouse
+
+# Go to kitchen and take pointer
+north
+take pointer
+
+# Go to stables and take monolith
+south
+south
+west
+take monolith
+
+# Go to observatory and take food ration
+north
+west
+take food ration
+
+# Go to hot chocolate factory and take space law space brochure
+south
+take space law space brochure
+
+# Go to navigation and take sand
+north
+east
+south
+south
+take sand
+
+# Go to Warp and take asterisk
+south
+west
+take asterisk
+
+# Go to Storage and take mutex
+south
+take mutex
+
+# Go to Security checkpoint
+north
+east
+north
+north
+east
+south
+south
+west
+south
+
+# Drop all items
+drop pointer
+drop mutex
+drop asterisk
+drop space law space brochure
+drop monolith
+drop mouse
+drop food ration
+drop sand
