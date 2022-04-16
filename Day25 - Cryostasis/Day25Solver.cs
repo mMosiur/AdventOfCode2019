@@ -1,74 +1,67 @@
-using System.Text;
 using AdventOfCode.Abstractions;
+using Combinatorics.Collections;
 
 namespace AdventOfCode.Year2019.Day25;
 
 public class Day25Solver : DaySolver
 {
 	private readonly long[] _program;
-	private Queue<long> _inputQueue = new();
-
-	private void EnqueueCommandFrom(string filename)
-	{
-		IEnumerable<string> commands = File.ReadLines(filename)
-			.Where(line => !string.IsNullOrWhiteSpace(line)) // Ignore empty lines
-			.Select(line => line.Trim()) // Trim lines
-			.Where(line => !line.StartsWith("#")); // Ignore comments
-		EnqueueCommands(commands);
-	}
-
-	private void EnqueueCommands(IEnumerable<string> commands)
-	{
-		foreach (var command in commands)
-		{
-			foreach (char c in command)
-			{
-				_inputQueue.Enqueue((long)c);
-			}
-			_inputQueue.Enqueue((long)'\n');
-		}
-	}
-
-	private long GetFromInputQueue()
-	{
-		if (_inputQueue.Count == 0)
-		{
-			string line = Console.ReadLine() ?? "";
-			while (string.IsNullOrWhiteSpace(line))
-			{
-				line = Console.ReadLine() ?? "";
-			}
-			foreach (char c in line)
-			{
-				_inputQueue.Enqueue((long)c);
-			}
-			_inputQueue.Enqueue((long)'\n');
-		}
-		return _inputQueue.Dequeue();
-	}
+	private readonly List<string> _items;
 
 	public Day25Solver(string inputFilePath) : base(inputFilePath)
 	{
 		_program = Input.Split(',').Select(long.Parse).ToArray();
+		_items = File.ReadLines("items.txt")
+			.Where(line => !string.IsNullOrWhiteSpace(line))
+			.Select(line => line.Trim())
+			.ToList();
 	}
 
 	public override string SolvePart1()
 	{
+		var queue = new IntcodeMachineCommandQueue();
 		var machine = new IntcodeMachine(
 			_program,
-			GetFromInputQueue
+			queue.GetInput
 		);
-		EnqueueCommandFrom("commands-collect-all-items.txt");
+		queue.EnqueueCommandsFrom("commands-collect-all-items.txt");
+		// Start with all items dropped
+		for (int i = 1; i <= _items.Count; i++)
+		{
+			// For every possible size of items subset get all combinations of that size
+			var combinations = new Combinations<string>(_items, i);
+			foreach (var combination in combinations)
+			{
+				// For each combination enqueue command to take all of them
+				queue.EnqueueCommands(combination.Select(item => $"take {item}"));
+				// Try going into the pressure plate room
+				queue.EnqueueCommand("east");
+				// If we are correct, the next command will not be executed. Otherwise:
+				// Drop all items in the combination
+				queue.EnqueueCommands(combination.Select(item => $"drop {item}"));
+			}
+		}
+		string? lastDigitSequence = null;
+		bool lastDigitSequenceBroken = false;
 		foreach (long output in machine.RunYieldingOutput())
 		{
-			Console.Write((char)output);
-			Console.Out.Flush();
+			char character = (char)output;
+			if(char.IsDigit(character))
+			{
+				if(lastDigitSequenceBroken)
+				{
+					lastDigitSequence = null;
+				}
+				lastDigitSequence += character;
+				lastDigitSequenceBroken = false;
+			}
+			else
+			{
+				lastDigitSequenceBroken = true;
+			}
 		}
-		return "UNSOLVED";
+		return lastDigitSequence ?? throw new Exception("No digit sequence found");;
 	}
 
-	public override string SolvePart2()
-	{
-		return "UNSOLVED";
-	}
+	public override string SolvePart2() => string.Empty;
 }
